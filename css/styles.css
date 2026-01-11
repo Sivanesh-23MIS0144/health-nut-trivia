@@ -372,7 +372,9 @@ select:focus {
     border: 2px solid #ff9a9e;
     border-radius: 8px;
     font-size: 16px;
-    -webkit-appearance: none;
+    -webkit-appearance: none; /* For older Chrome, Safari, Edge */
+    -moz-appearance: none;    /* For older Firefox */
+    appearance: none;
 }
 
 .riddle-error {
