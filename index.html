@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Trivia Quiz</title>
+    <link rel="icon" href="assets/healthTrivia.jpg" type="image/png">
+    
+    <!-- Module 1: Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22LD4DD8ES"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-22LD4DD8ES');
+    </script>
+</head>
+<body>
+    <!-- Timer Display -->
+    <div id="timerDisplay" class="timer-display">
+        <span id="timerText">⏰ 25:00</span>
+    </div>
+
+    <!-- Time Expired Modal -->
+    <div id="timeExpiredModal" class="time-expired-modal">
+        <div class="time-expired-content">
+            <h2>⏰ Time's Up!</h2>
+            <p>Your 25-minute session has expired. Your progress has been saved automatically.</p>
+            <button class="btn" onclick="handleTimeExpiredOK()">OK</button>
+        </div>
+    </div>
+   
+    <!-- Top-left login info -->
+    <div id="topLeftLogin" class="top-left-login">
+        <img src="assets/vit.jpg" alt="VIT Logo" class="logo">
+        <div id="userInfoLeft"></div>
+    </div>
+    
+    <!-- Top-right login info -->
+    <div id="topRightLogin" class="top-right-login">
+        <img src="assets/healthTrivia.jpg" alt="Health Club Logo" class="logo">
+        <div id="userInfoRight"></div>
+    </div>
+
+    <!-- Copyright footer -->
+    <div class="copyright">
+        Copyright © 2026 Software Development,Health Trivia,Vellore-632 014.
+    </div>
+
+    <div class="container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <img src="assets/healthTrivia.jpg" alt="Health Club Logo" class="logo">
+            <h2>Health Trivia Educational Quiz</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error" id="nameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <div class="error" id="phoneError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="registration">Registration Number:</label>
+                    <input type="text" id="registration" name="registration" required>
+                    <div class="error" id="registrationError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="belongs">Belongs To:</label>
+                    <select id="belongs" name="belongs" required>
+                        <option value="">Select an option</option>
+                        <option value="fall-sem-exc-24-25">Fall sem EXC 24-25</option>
+                        <option value="winter-sem-exc-24-25">Winter sem EXC 24-25</option>
+                        <option value="junior-core">Junior Core</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error" id="belongsError"></div>
+                </div>
+                <button type="submit" class="btn" id="submitBtn">Start Quiz</button>
+                <div id="statusMessage"></div>
+            </form>
+        </div>
+
+        <!-- Quiz Page -->
+        <div id="quizPage" class="page">
+            <h1>Quiz Challenge</h1>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+            <div id="questionContainer"></div>
+            <button id="nextBtn" class="btn" style="display: none;">Next Question</button>
+            <button id="finishQuizBtn" class="btn" style="display: none;">Proceed to Riddles</button>
+        </div>
+
+        <!-- Riddle Page -->
+        <div id="riddlePage" class="page">
+            <h1>Riddle Challenge</h1>
+            <div class="progress-bar">
+                <div class="progress" id="riddleProgressBar"></div>
+            </div>
+            <div id="riddleContainer"></div>
+            <button id="submitRiddleBtn" class="btn" style="display: none;">Submit Answer</button>
+            <button id="nextRiddleBtn" class="btn" style="display: none;">Next Riddle</button>
+            <button id="finishRiddleBtn" class="btn" style="display: none;">Complete Challenge</button>
+        </div>
+
+        <!-- Final Page -->
+        <div id="finalPage" class="page">
+            <div class="celebration">🎉</div>
+            <h1>Congratulations!</h1>
+            <div class="score-display">
+                <div>Quiz Score: <span id="finalQuizScore"></span>/15</div>
+                <div>Riddle Score: <span id="finalRiddleScore"></span>/10</div>
+                <div><strong>Total Score: <span id="totalScore"></span>/25</strong></div>
+            </div>
+            <p class="final-message">
+                Thank you for participating in our Health Trivia Quiz educational challenge! 
+                Your awareness about food safety issues contributes to a healthier world.
+            </p>
+            <button class="btn" onclick="restartQuiz()">Take Quiz Again</button>
+        </div>
+    </div>
+
+    
+</body>
+</html>
